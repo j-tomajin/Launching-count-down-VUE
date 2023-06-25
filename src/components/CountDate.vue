@@ -15,25 +15,27 @@
 
 <template>
     <section class="count-down">
-        <!-- DAY -->
-        <div class="container-day">
+
+        <!-- DAYS -->
+        <div class="container">
             <h3 class="day">{{ day }}</h3>
-            <p>Day</p>
+            <p>DAYS</p>
         </div>
+
         <!-- HOUR -->
-        <div class="container-hour">
+        <div class="container">
             <h3 class="hour">{{ hour }}</h3>
-            <p>Hour</p>
+            <p>HOURS</p>
         </div>
         <!-- MINUTE -->
-        <div class="container-minute">
+        <div class="container">
             <h3 class="minute">{{ minute }}</h3>
-            <p>Minute</p>
+            <p>MINUTES</p>
         </div>
         <!-- SECOND -->
-        <div class="container-second">
+        <div class="container">
             <h3 class="second">{{ second }}</h3>
-            <p>second</p>
+            <p>SECONDS</p>
         </div>
     </section>
 </template>
@@ -44,14 +46,27 @@
     .count-down {
         text-align: center;
         display: flex;
-        justify-content: space-around;
+        align-items: center;
+        justify-content: center;
+        gap: rem(18);
     }
+    
+    .container {
+        height: clampf(100, 800, 125);
+        width: clampf(75, 800, 100);
+        
+        h3 {
+            color: var(--clr-primary-soft-red);
+            font-size: clampf(16, 800, 64);
+            background-color: var(--clr-neutral-dark-blue);
+            border-radius: .1em;
+            margin-bottom: rem(16);
+        }
 
-    h3 {
-        color: var(--clr-primary-soft-red);
-    }
-
-    p {
-        color: var(--clr-neutral-white);
+        p {
+            color: var(--clr-neutral-white);
+            letter-spacing: 2px;
+            font-size: rem(12);
+        }
     }
 </style>
