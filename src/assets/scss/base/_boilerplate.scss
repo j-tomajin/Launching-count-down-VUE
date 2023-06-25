@@ -52,6 +52,7 @@ body {
         image: url('../images/bg-stars.svg'), url('../images/pattern-hills.svg');
         repeat: no-repeat;
         position: center, bottom;
+        size: contain;
     };
 }
 
