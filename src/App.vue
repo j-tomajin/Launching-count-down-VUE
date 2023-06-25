@@ -1,14 +1,14 @@
 <script>
-  import Header from './components/Header.vue';
+  import HeaderContent from './components/HeaderContent.vue';
   import CountDate from './components/CountDate.vue';
-  import Footer from './components/Footer.vue';
+  import FooterContent from './components/FooterContent.vue';
 
   export default {
     name: 'App',
     components: {
-      Header,
+      HeaderContent,
       CountDate,
-      Footer,
+      FooterContent,
     },
     data: function() {
       return {
@@ -34,27 +34,39 @@
         this.minute = Math.floor((gap % hour) / minute)
         this.second = Math.floor((gap % minute) / second)
 
-        setInterval(() => {
+        let interval = setInterval(() => {
           this.countDown()
+
+          if(gap === 0) {
+            clearInterval(interval)
+          }
         }, 1000);
+
+        if(gap === 0) {
+          alert("WE'RE OPEN!")
+        }
       }
     },
   }
 </script>
 
 <template>
-  <Header
+  
+  <HeaderContent
     class="header"
     text="WE'RE LAUNCHING SOON!"
   />
-  <CountDate
-    :day="day"
-    :hour="hour"
-    :minute="minute"
-    :second="second"
-    @count-down="countDown"
-  />
-  <Footer />
+  <main>
+    <CountDate
+      :day="day"
+      :hour="hour"
+      :minute="minute"
+      :second="second"
+      @count-down="countDown"
+    />
+  </main>
+  
+  <FooterContent />
 </template>
 
 <style lang="scss" scoped>
@@ -62,5 +74,6 @@
 
   .header {
     color: var(--clr-neutral-white);
+    margin-block: clampf(75, 800, 100)
   }
 </style>
